@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+
+	<div class="test-directive"></div>
+	<test-directive></test-directive>
+	<p test-directive></p>
+	
+	<hr>
+	<h1>Text in controller is : {{name}}</h1>
+	<h1>Age in controller is : {{age}}</h1>
+	<button ng-click="alertMessage()">Controller</button>
+
+	<div test-directive-two name="{{name}}" age="age" func="alertMessage()"></div>
+
+	<script>
+
+		var app = angular.module("myApp", []);
+
+		app.directive("testDirective", function() {
+			function linkFunction($scope) {
+				$scope.textValue="Text";
+				console.log("alert");
+				$scope.changeText=function(){
+					$scope.textValue=$scope.controllerProperty;
+				}
+			}
+    		return {
+        		restrict : "CEA",
+        		scope:{}, // false , true , {}
+        		link:linkFunction,
+        		template : ['<h1 ng-click="changeText()">Text is : {{textValue}}</h1>']
+    		};
+		});
+
+		app.directive("testDirectiveTwo", function() {
+    		return {
+        		restrict : "CEA",
+        		scope:{
+        			name: '@',
+        			age:'=',
+        			func:'&'
+        		}, 
+        		template : [
+        			'<h1>The data in directive is : {{name}}</h1>',
+        			'<p>Enter New Name :<input type="text" ng-model="name"/></p>',
+        			
+        			'<h1>The age in directive is : {{age}}</h1>',
+        			'<p>Enter New Age :<input type="text" ng-model="age"/></p>',
+        			
+        			'<button ng-click="func()">Directive</button>'
+        			].join('')
+    		};
+		});
+
+		app.controller('myCtrl',['$scope', function($scope) {  
+		
+		    $scope.controllerProperty="Text From Controller";
+		    
+		    $scope.name="Ravi Singh";
+		    $scope.age=22;
+		    
+		    $scope.alertMessage=function(){
+		    	alert($scope.name);
+		    }
+		    
+		}]);
+	
+	</script>
+	
+</body>
+</html>
+
+<!-- 
+
+  1. @ -> text bind
+  2. = -> two way bind
+  3. & -> one way bind
+  
+-->
+

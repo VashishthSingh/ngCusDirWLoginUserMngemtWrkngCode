@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="UTF-8">
+	<title>Angular Integration with servlet Admin</title>
+	
+	<style type="text/css">
+		#getDataBtn{margin-top: 10px;margin-left: 10px;}
+		a{text-decoration: none;margin: 10px;}
+	</style>
+	
+</head>
+<body>
+
+	<a href="#!report">Report</a>
+	<a href="#!admin" ng-show="setDeciderForAdmin">Admin</a>
+	<a href="#!report1">Report1(Custom Directive)</a>
+	<a href="#!addUser" ng-show="setDeciderForAdmin">Add User</a>
+	<a href="#!addAdmin" ng-show="setDeciderForAdmin">Add Admin</a><br><br>
+	
+	<button id="getDataBtn" ng-click="startBtn()">START</button>
+	<button id="getDataBtn" ng-click="stopBtn()">STOP</button>
+		
+</body>
+</html>

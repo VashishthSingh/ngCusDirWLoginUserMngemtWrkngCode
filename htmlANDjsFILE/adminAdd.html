@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+	<title>Add Admin Page</title>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	
+	<style type="text/css">
+		.outerDiv{height:40px;width:100%;}
+		#div1{width:20%;}
+		input,button{width:100%;height:40px;box-sizing: border-box;}
+		a{text-decoration: none;margin: 10px;}
+	</style>
+	
+</head>
+<body> <!--  ng-app="myApp" ng-controller="addAdminController"> -->
+
+		<a href="#!report">Report</a>
+		<a href="#!admin" ng-show="setDeciderForAdminAdd">Admin</a>
+		<a href="#!report1">Report1(Custom Directive)</a>
+		<a href="#!addUser" ng-show="setDeciderForAdminAdd">Add User</a>
+		<a href="#!addAdmin" ng-show="setDeciderForAdminAdd">Add Admin</a><br><br>
+		
+		<form action="/">
+			<div id="div1">
+				<div class="outerDiv">
+					<input type="text" id="username" ng-required ="true" ng-model="username" placeholder="username"/>
+				</div>
+				<div class="outerDiv" style="margin-top: 5px;margin-bottom: 5px;">
+					<input type="password" id="password" ng-required ="true" ng-model="password" placeholder="password"/>
+				</div>
+				<div class="outerDiv">
+					<button type="button" ng-click="addAdminFunction()">Add Admin</button>
+				</div>
+			</div>
+		</form>
+		
+	<script>
+// 		var app = angular.module("myApp", []);
+// 		app.controller('addAdminController',['$window','$http','$scope','$location',function($window,$http,$scope,$location){
+// 			$scope.addAdminFunction=function(){
+				
+// 				var uname=$scope.username;
+// 				var pass=$scope.password;
+// 				console.log(uname+" "+pass);
+				
+// 				$http({
+// 					url:"http://localhost:8080/AngularCDWLUserManagement/AddAdminServlet",
+// 					   //http://localhost:8080/AngularCDWLUserManagement/AddUserServlet
+// 					method:"GET",
+// 					params:{
+// 						"userName":uname,   //$scope.username,
+// 						"passWord":pass      //$scope.password
+// 					}
+// 				}).then(function(response){
+// 					$window.alert(response.data);
+// 				},function(response){
+// 					$window.alert("Error");
+// 				});
+// 			};
+// 		}]);
+	</script> 
+	
+</body>
+</html>
+
+
